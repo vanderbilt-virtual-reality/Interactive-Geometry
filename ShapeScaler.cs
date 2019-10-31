@@ -60,7 +60,13 @@ public class ShapeScaler : OVRGrabber
 
         // Could also probably use m_parentTransform.localScale because the parent of the script shoud be the GameObject
         Vector3 scale = gameObject.transform.localScale;
-        scale.y += distanceChange;
+        // UNCOMMENT THIS LINE TO CHANGE BASED ON HAND MOTION
+        // (TODO): Right now, doesn't work continously. One click and it jumps
+        // Also, current calculation of distanceChange is off. Too big
+        //scale.y += distanceChange;
+
+        // UNCOMMENT THIS LINE FOR PRESS AND HOLD TO EXTRUDE
+        scale.y += Time.deltaTime;
         gameObject.transform.localScale = scale;
 
     }
