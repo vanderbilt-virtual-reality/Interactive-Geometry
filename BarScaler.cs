@@ -12,7 +12,7 @@ public class BarScaler : MonoBehaviour
     public GameObject bar;
 
     // Index representing the dimension to base the height of the bar off of
-    // 0: X, 1: Y, 2: Z
+    // 0: X, 1: Y, 2: Z, 3: Radius
     public int index;
 
 
@@ -36,13 +36,15 @@ public class BarScaler : MonoBehaviour
             barScale.y = modelScale.x;
         } else if (index ==1 ){
             barScale.y = modelScale.y;
-        } else {
+        } else if (index == 2) {
             barScale.y = modelScale.z;
+        } else{
+            barScale.y = modelScale.x / 2;
         }
 
         // Code found at https://answers.unity.com/questions/120081/how-can-i-scale-my-object-quotupwardsquot.html
         // Makes it appear as if object is only scaling upwards
-        barPosition.y = 0 + barScale.y/50.0f;
+        barPosition.y = 0 + barScale.y/100;
 
         bar.transform.localScale = barScale;
         //bar.transform.position = barPosition;
